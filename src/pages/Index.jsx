@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Trash } from "lucide-react";
 
 const Index = () => {
   const [posts, setPosts] = useState([]);
@@ -12,6 +13,12 @@ const Index = () => {
     const storedPosts = JSON.parse(localStorage.getItem("posts")) || [];
     setPosts(storedPosts);
   }, []);
+
+  const handleDelete = (index) => {
+    const updatedPosts = posts.filter((_, i) => i !== index);
+    setPosts(updatedPosts);
+    localStorage.setItem("posts", JSON.stringify(updatedPosts));
+  };
 
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col items-center py-10">
@@ -27,8 +34,11 @@ const Index = () => {
       <main className="w-full max-w-4xl space-y-6">
         {posts.map((post, index) => (
           <Card key={index}>
-            <CardHeader>
+            <CardHeader className="flex justify-between items-center">
               <CardTitle>{post.title}</CardTitle>
+              <Button variant="outline" onClick={() => handleDelete(index)}>
+                <Trash className="h-4 w-4" />
+              </Button>
             </CardHeader>
             <CardContent>
               <p>{post.content}</p>
