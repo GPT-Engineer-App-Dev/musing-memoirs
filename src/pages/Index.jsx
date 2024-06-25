@@ -1,17 +1,40 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
 const Index = () => {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    const storedPosts = JSON.parse(localStorage.getItem("posts")) || [];
+    setPosts(storedPosts);
+  }, []);
+
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center py-10">
       <header className="mb-10">
         <h1 className="text-4xl font-bold">My Personal Blog</h1>
         <p className="text-lg text-gray-600">Sharing my thoughts and experiences</p>
       </header>
+      <div className="flex justify-end mb-4">
+        <Link to="/add-post">
+          <Button>Add New Post</Button>
+        </Link>
+      </div>
       <main className="w-full max-w-4xl space-y-6">
+        {posts.map((post, index) => (
+          <Card key={index}>
+            <CardHeader>
+              <CardTitle>{post.title}</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p>{post.content}</p>
+            </CardContent>
+          </Card>
+        ))}
         <Card>
           <CardHeader>
             <CardTitle>Welcome to My Blog</CardTitle>
