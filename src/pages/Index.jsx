@@ -14,10 +14,10 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center py-10">
+    <div className="min-h-screen bg-background text-foreground flex flex-col items-center py-10">
       <header className="mb-10">
         <h1 className="text-4xl font-bold">My Personal Blog</h1>
-        <p className="text-lg text-gray-600">Sharing my thoughts and experiences</p>
+        <p className="text-lg">Sharing my thoughts and experiences</p>
       </header>
       <div className="flex justify-end mb-4">
         <Link to="/add-post">
@@ -52,19 +52,19 @@ const Index = () => {
           <CardContent>
             <form className="space-y-4">
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="name" className="block text-sm font-medium">
                   Name
                 </label>
                 <Input id="name" type="text" className="mt-1 block w-full" />
               </div>
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="email" className="block text-sm font-medium">
                   Email
                 </label>
                 <Input id="email" type="email" className="mt-1 block w-full" />
               </div>
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="message" className="block text-sm font-medium">
                   Message
                 </label>
                 <Textarea id="message" className="mt-1 block w-full" rows="4" />

@@ -19,7 +19,7 @@ const AddPost = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center py-10">
+    <div className="min-h-screen bg-background text-foreground flex flex-col items-center py-10">
       <header className="mb-10">
         <h1 className="text-4xl font-bold">Add New Post</h1>
       </header>
@@ -31,7 +31,7 @@ const AddPost = () => {
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label htmlFor="title" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="title" className="block text-sm font-medium">
                   Title
                 </label>
                 <Input
@@ -44,7 +44,7 @@ const AddPost = () => {
                 />
               </div>
               <div>
-                <label htmlFor="content" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="content" className="block text-sm font-medium">
                   Content
                 </label>
                 <Textarea
